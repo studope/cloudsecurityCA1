@@ -1,0 +1,33 @@
+# Dependency directories
+node_modules/
+venv/
+.env
+
+# Editor directories and files
+.vscode/
+.idea/
+
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.cache
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+
+*.pem
+*.key
+*.env
+.env*
+*credentials*
+*secret*
+terraform.tfvars
