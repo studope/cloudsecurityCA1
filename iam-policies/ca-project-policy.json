@@ -1,0 +1,243 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "EC2VPCProjectRegion",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:RebootInstances",
+        "ec2:TerminateInstances",
+        "ec2:CreateSecurityGroup",
+        "ec2:DeleteSecurityGroup",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:AuthorizeSecurityGroupEgress",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:RevokeSecurityGroupEgress",
+        "ec2:CreateTags",
+        "ec2:DeleteTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteVolume",
+        "ec2:AttachVolume",
+        "ec2:DetachVolume",
+        "ec2:CreateSnapshot",
+        "ec2:DeleteSnapshot",
+        "ec2:CreateKeyPair",
+        "ec2:DeleteKeyPair",
+        "ec2:ImportKeyPair",
+        "ec2:AllocateAddress",
+        "ec2:ReleaseAddress",
+        "ec2:AssociateAddress",
+        "ec2:DisassociateAddress",
+        "ec2:CreateVpc",
+        "ec2:DeleteVpc",
+        "ec2:CreateSubnet",
+        "ec2:DeleteSubnet",
+        "ec2:CreateInternetGateway",
+        "ec2:DeleteInternetGateway",
+        "ec2:AttachInternetGateway",
+        "ec2:DetachInternetGateway",
+        "ec2:CreateRouteTable",
+        "ec2:DeleteRouteTable",
+        "ec2:CreateRoute",
+        "ec2:DeleteRoute",
+        "ec2:AssociateRouteTable",
+        "ec2:DisassociateRouteTable",
+        "ec2:ModifyInstanceAttribute"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "eu-west-1"
+        }
+      }
+    },
+    {
+      "Sid": "EC2VPCDescribeGlobal",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:Describe*",
+        "ec2:GetConsoleOutput"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ElasticLoadBalancing",
+      "Effect": "Allow",
+      "Action": "elasticloadbalancing:*",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "eu-west-1"
+        }
+      }
+    },
+    {
+      "Sid": "ACMForALB",
+      "Effect": "Allow",
+      "Action": [
+        "acm:RequestCertificate",
+        "acm:DescribeCertificate",
+        "acm:ListCertificates",
+        "acm:GetCertificate",
+        "acm:DeleteCertificate",
+        "acm:AddTagsToCertificate",
+        "acm:ListTagsForCertificate",
+        "acm:ResendValidationEmail"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "eu-west-1"
+        }
+      }
+    },
+    {
+      "Sid": "CloudWatchAndLogs",
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:*",
+        "logs:*",
+        "sns:CreateTopic",
+        "sns:Subscribe",
+        "sns:Publish",
+        "sns:ListTopics",
+        "sns:GetTopicAttributes",
+        "sns:SetTopicAttributes",
+        "sns:DeleteTopic"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "SSMSessionManager",
+      "Effect": "Allow",
+      "Action": [
+        "ssm:StartSession",
+        "ssm:TerminateSession",
+        "ssm:ResumeSession",
+        "ssm:DescribeSessions",
+        "ssm:GetConnectionStatus",
+        "ssm:DescribeInstanceInformation",
+        "ssm:SendCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:ListCommandInvocations"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "PassRoleToEC2Only",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::123456789012:role/CA-EC2-WordPress-Role",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "ec2.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Sid": "IAMReadAndInstanceProfile",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:ListRoles",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListInstanceProfiles",
+        "iam:GetInstanceProfile",
+        "iam:CreateInstanceProfile",
+        "iam:DeleteInstanceProfile",
+        "iam:AddRoleToInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile"
+      ],
+      "Resource": [
+        "arn:aws:iam::123456789012:role/CA-EC2-WordPress-Role",
+        "arn:aws:iam::123456789012:instance-profile/CA-EC2-WordPress-Role"
+      ]
+    },
+    {
+      "Sid": "BudgetsOptional",
+      "Effect": "Allow",
+      "Action": [
+        "budgets:ViewBudget",
+        "budgets:ModifyBudget",
+        "budgets:CreateBudgetAction"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "GuardDuty",
+      "Effect": "Allow",
+      "Action": [
+        "guardduty:CreateDetector",
+        "guardduty:DeleteDetector",
+        "guardduty:GetDetector",
+        "guardduty:ListDetectors",
+        "guardduty:UpdateDetector",
+        "guardduty:ListFindings",
+        "guardduty:GetFindings",
+        "guardduty:ArchiveFindings"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AWSConfig",
+      "Effect": "Allow",
+      "Action": [
+        "config:PutConfigurationRecorder",
+        "config:PutDeliveryChannel",
+        "config:StartConfigurationRecorder",
+        "config:StopConfigurationRecorder",
+        "config:Describe*",
+        "config:PutConfigRule",
+        "config:DeleteConfigRule",
+        "config:PutEvaluations",
+        "config:BatchGetResourceConfig",
+        "config:ListDiscoveredResources"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ConfigS3DeliveryBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:PutBucketPolicy",
+        "s3:PutObject",
+        "s3:GetBucketAcl"
+      ],
+      "Resource": "arn:aws:s3:::ca-config-delivery-*"
+    },
+    {
+      "Sid": "CognitoUserPool",
+      "Effect": "Allow",
+      "Action": [
+        "cognito-idp:CreateUserPool",
+        "cognito-idp:DeleteUserPool",
+        "cognito-idp:UpdateUserPool",
+        "cognito-idp:DescribeUserPool",
+        "cognito-idp:ListUserPools",
+        "cognito-idp:CreateUserPoolClient",
+        "cognito-idp:DescribeUserPoolClient",
+        "cognito-idp:UpdateUserPoolClient",
+        "cognito-idp:CreateUserPoolDomain",
+        "cognito-idp:DescribeUserPoolDomain",
+        "cognito-idp:AdminCreateUser",
+        "cognito-idp:AdminSetUserPassword"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "Route53IfHostedInAWS",
+      "Effect": "Allow",
+      "Action": [
+        "route53:ListHostedZones",
+        "route53:GetChange",
+        "route53:ChangeResourceRecordSets",
+        "route53:ListResourceRecordSets"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
