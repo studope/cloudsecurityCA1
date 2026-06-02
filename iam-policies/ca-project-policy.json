@@ -130,7 +130,7 @@
       "Sid": "PassRoleToEC2Only",
       "Effect": "Allow",
       "Action": "iam:PassRole",
-      "Resource": "arn:aws:iam::123456789012:role/CA-EC2-WordPress-Role",
+      "Resource": "arn:aws:iam::804838452454:role/CA-EC2-WordPress-Role",
       "Condition": {
         "StringEquals": {
           "iam:PassedToService": "ec2.amazonaws.com"
@@ -152,8 +152,8 @@
         "iam:RemoveRoleFromInstanceProfile"
       ],
       "Resource": [
-        "arn:aws:iam::123456789012:role/CA-EC2-WordPress-Role",
-        "arn:aws:iam::123456789012:instance-profile/CA-EC2-WordPress-Role"
+        "arn:aws:iam::804838452454:role/CA-EC2-WordPress-Role",
+        "arn:aws:iam::804838452454:instance-profile/CA-EC2-WordPress-Role"
       ]
     },
     {
