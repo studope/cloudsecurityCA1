@@ -1,0 +1,188 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+                  WordPress Security Scanner
+                         Version 4.0.0
+                    An Automattic endeavor
+                    https://automattic.com
+_______________________________________________________________
+
+[+] URL: http://52.50.86.180/ [52.50.86.180]
+[+] Started: Thu Jul  9 10:04:20 2026
+[+] Command Line: wpscan --url http://52.50.86.180 --api-token [REDACTED] -e vp,vt,u,tt,cb,dbe --random-user-agent
+[+] Hostname: MacBook-Pro.local
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entries:
+ |  - Server: Apache/2.4.67 (Amazon Linux)
+ |  - Permissions-Policy: private-state-token-redemption=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com"), private-state-token-issuance=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com")
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] robots.txt found: http://52.50.86.180/robots.txt
+ | Interesting Entries:
+ |  - /wp-content/uploads/wc-logs/
+ |  - /wp-content/uploads/woocommerce_transient_files/
+ |  - /wp-content/uploads/woocommerce_uploads/
+ |  - /*?add-to-cart=
+ |  - /*?*add-to-cart=
+ |  - /wp-admin/
+ |  - /wp-admin/admin-ajax.php
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://52.50.86.180/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://52.50.86.180/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] Upload directory has listing enabled: http://52.50.86.180/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://52.50.86.180/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 7.0 identified (Latest, released on 2026-05-20).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://52.50.86.180/feed/, <generator>https://wordpress.org/?v=7.0</generator>
+ | Confirmed By: Rss Generator (Passive Detection)
+ |  - http://52.50.86.180/comments/feed/, <generator>https://wordpress.org/?v=7.0</generator>
+
+[+] WordPress theme in use: astra
+ | Location: http://52.50.86.180/wp-content/themes/astra/
+ | Last Updated: 2026-07-06 11:00pm GMT (2 days ago, per WordPress.org)
+ | Active Installs: 1,000,000 (per WordPress.org)
+ | Readme: http://52.50.86.180/wp-content/themes/astra/readme.txt
+ | [!] The version is out of date, the latest version is 4.13.5
+ | Style URL: http://52.50.86.180/wp-content/themes/astra/style.css
+ | Style Name: Astra
+ | Style URI: https://wpastra.com/
+ | Description: The Astra WordPress theme is lightning-fast and highly customizable. It has over 1 million downloads...
+ | Author: Brainstorm Force
+ | Author URI: https://wpastra.com/about/?utm_source=theme_preview&utm_medium=author_link&utm_campaign=astra_theme
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ | Confirmed By: Urls In 404 Page (Passive Detection)
+ |
+ | Version: 4.13.4 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://52.50.86.180/wp-content/themes/astra/style.css, Match: 'Version: 4.13.4'
+
+[+] Enumerating Vulnerable Plugins (via Passive and Aggressive Methods)
+
+[+] sureforms
+ | Location: http://52.50.86.180/wp-content/plugins/sureforms/
+ | Last Updated: 2026-07-08 6:42am GMT (1 day ago, per WordPress.org)
+ | Active Installs: 500,000 (per WordPress.org)
+ | Readme: http://52.50.86.180/wp-content/plugins/sureforms/readme.txt
+ | [!] The version is out of date, the latest version is 2.12.1
+ | [!] Directory listing is enabled
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | [!] 1 vulnerability identified:
+ |
+ | [!] Title: SureForms < 2.11.1 - Unauthenticated Payment Amount Bypass
+ |     UUID: bd738da7-f950-4da9-bcc1-c1fe845d7faa
+ |     Fixed in: 2.11.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/bd738da7-f950-4da9-bcc1-c1fe845d7faa
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-11567
+ |
+ | Version: 2.10.1 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - http://52.50.86.180/wp-content/plugins/sureforms/readme.txt
+ | Confirmed By: Readme - ChangeLog Section (Aggressive Detection)
+ |  - http://52.50.86.180/wp-content/plugins/sureforms/readme.txt
+
+ Checking Known Locations -: |=============================================================
+[+] wpforms-lite
+ | Location: http://52.50.86.180/wp-content/plugins/wpforms-lite/
+ | Last Updated: 2026-06-25 11:36am GMT (13 days ago, per WordPress.org)
+ | Active Installs: 5,000,000 (per WordPress.org)
+ | Readme: http://52.50.86.180/wp-content/plugins/wpforms-lite/readme.txt
+ | [!] The version is out of date, the latest version is 1.10.2.1
+ | [!] Directory listing is enabled
+ |
+ | Found By: Known Locations (Aggressive Detection)
+ |  - http://52.50.86.180/wp-content/plugins/wpforms-lite/, status: 200
+ |
+ | [!] 1 vulnerability identified:
+ |
+ | [!] Title: WPForms < 1.10.2.1 - Unauthenticated CRLF Email Header Injection via Reply-To Display Name
+ |     UUID: ee281d4f-d93f-4f57-bc27-867bd1d28970
+ |     Fixed in: 1.10.2.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/ee281d4f-d93f-4f57-bc27-867bd1d28970
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-12127
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/d5a51c22-c4ca-4897-ad7e-c5df00b07fe0
+ |
+ | Version: 1.10.1.1 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - http://52.50.86.180/wp-content/plugins/wpforms-lite/readme.txt
+ | Confirmed By: Readme - ChangeLog Section (Aggressive Detection)
+ |  - http://52.50.86.180/wp-content/plugins/wpforms-lite/readme.txt
+=========================================================|
+[i] 2 plugin(s) Identified.
+[+] Enumerating Vulnerable Themes (via Passive and Aggressive Methods)
+
+ Checking Known Locations -: |======================================================================================================================|
+[i] No themes Found.
+[+] Enumerating Timthumbs
+
+ Checking Known Locations -: |======================================================================================================================|
+
+[i] No Timthumbs Found.
+
+[+] Enumerating Config Backups
+
+ Checking Config Backups -: |=======================================================================================================================|
+
+[i] No Config Backups Found.
+
+[+] Enumerating DB Exports
+
+ Checking DB Exports -: |===========================================================================================================================|
+
+[i] No DB Exports Found.
+
+[+] Enumerating Users (via Passive and Aggressive Methods)
+
+[+] admin
+ | Found By: Rss Generator (Passive Detection)
+
+ Brute Forcing Author IDs -: |======================================================================================================================|
+[i] 1 user(s) Identified.
+[+] WPScan DB API OK
+ | Plan: free
+ | Requests Done (during the scan): 15
+ | Requests Remaining: 10
+[+] Finished: Thu Jul  9 10:43:25 2026
+[+] Requests Done: 10893
+[+] Cached Requests: 12
+[+] Most response codes received: 404: 10755, 200: 87, 301: 48, 302: 1, failed: 1
+[+] Data Sent: 0 B
+[+] Data Received: 9.78 MB
+[+] Memory used: 257.156 MB
+[+] Elapsed time: 00:39:04
