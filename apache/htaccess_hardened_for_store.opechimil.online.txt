@@ -1,0 +1,77 @@
+# ============================================================
+# Hardened .htaccess for store.opechimil.online
+# Place at WordPress web root. Requires: mod_headers, mod_rewrite, mod_autoindex
+# Fixes ZAP Medium/Low findings: CSP, clickjacking, X-Content-Type-Options,
+# HSTS, cookie flags, server version leak, directory listing, info disclosure.
+# ============================================================
+
+# ---- Security response headers (fixes several ZAP alerts) ----
+<IfModule mod_headers.c>
+    # Anti-clickjacking (Missing Anti-clickjacking Header)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # MIME sniffing (X-Content-Type-Options Header Missing)
+    Header always set X-Content-Type-Options "nosniff"
+
+    # HSTS (Strict-Transport-Security Header Not Set) - only safe once HTTPS is solid
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+    # Referrer + Permissions hardening
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Content-Security-Policy (CSP Header Not Set / wildcard / unsafe-inline).
+    # NOTE: 'unsafe-inline' is kept because Elementor/Astra inline styles+scripts.
+    # Tighten iteratively: move to nonces/hashes and drop unsafe-inline when possible.
+    Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"
+
+    # Fix Cross-Domain Misconfiguration: do NOT leave Access-Control-Allow-Origin: *
+    Header always unset Access-Control-Allow-Origin
+
+    # Mark WooCommerce/WordPress cookies Secure + HttpOnly + SameSite
+    # (Cookie Without Secure Flag / No HttpOnly / without SameSite)
+    Header always edit Set-Cookie ^(.*)$ "$1; HttpOnly; Secure; SameSite=Lax"
+
+    # Remove server/tech fingerprinting headers (Server version leak)
+    Header always unset X-Powered-By
+    Header unset X-Powered-By
+</IfModule>
+
+# ---- Hide Apache version (Server Leaks Version Information) ----
+# ServerTokens/ServerSignature must go in httpd.conf (see notes), not .htaccess.
+
+# ---- Disable directory listing (uploads listing enabled - wpscan) ----
+Options -Indexes
+
+# ---- Block sensitive files (readme.html version disclosure, etc.) ----
+<FilesMatch "^(readme\.html|license\.txt|wp-config\.php|xmlrpc\.php|\.htaccess|\.user\.ini)$">
+    Require all denied
+</FilesMatch>
+
+# ---- Block PHP execution in uploads (defence-in-depth vs upload RCE) ----
+<Directory "/var/www/html/wp-content/uploads">
+    <FilesMatch "\.(php|php5|php7|phtml)$">
+        Require all denied
+    </FilesMatch>
+</Directory>
+
+# ---- Protect wp-includes and block XML-RPC amplification ----
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^wp-admin/includes/ - [F,L]
+    RewriteRule !^wp-includes/ - [S=3]
+    RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+    RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+    RewriteRule ^wp-includes/theme-compat/ - [F,L]
+</IfModule>
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
