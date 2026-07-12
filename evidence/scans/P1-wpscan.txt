@@ -12,8 +12,12 @@ _______________________________________________________________
                     https://automattic.com
 _______________________________________________________________
 
-[+] URL: https://store.opechimil.online/ [52.50.242.161]
-[+] Started: Fri Jul 10 11:13:31 2026
+[i] It seems like you have not updated the database for some time.
+[?] Do you want to update now? [Y]es [N]o, default: [N][i] Updating the Database ...
+[i] Update completed.
+
+[+] URL: https://store.opechimil.online/ [54.74.63.212]
+[+] Started: Sun Jul 12 01:36:07 2026
 [+] Command Line: wpscan --url https://store.opechimil.online/ --api-token [REDACTED] -e vp,vt,u,tt,cb,dbe --random-user-agent
 [+] Hostname: MacBook-Pro.local
 
@@ -21,8 +25,10 @@ Interesting Finding(s):
 
 [+] Headers
  | Interesting Entries:
+ |  - Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests
  |  - Permissions-Policy: private-state-token-redemption=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com"), private-state-token-issuance=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com")
- |  - Server: Apache/2.4.67 (Amazon Linux)
+ |  - Referrer-Policy: strict-origin-when-cross-origin
+ |  - Server: Apache
  | Found By: Headers (Passive Detection)
  | Confidence: 100%
 
@@ -38,14 +44,6 @@ Interesting Finding(s):
  | Found By: Robots Txt (Aggressive Detection)
  | Confidence: 100%
 
-[+] WordPress readme found: https://store.opechimil.online/readme.html
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 100%
-
-[+] Upload directory has listing enabled: https://store.opechimil.online/wp-content/uploads/
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 100%
-
 [+] The external WP-Cron seems to be enabled: https://store.opechimil.online/wp-cron.php
  | Found By: Direct Access (Aggressive Detection)
  | Confidence: 60%
@@ -53,16 +51,18 @@ Interesting Finding(s):
  |  - https://www.iplocation.net/defend-wordpress-from-ddos
  |  - https://github.com/wpscanteam/wpscan/issues/1299
 
-
-Fingerprinting the version -: |==================================================================================|
-[i] The WordPress version could not be detected.
+[+] WordPress version 7.0.1 identified (Latest, released on 2026-07-09).
+ | Found By: Rss Generator (Passive Detection)
+ |  - https://store.opechimil.online/feed/, <generator>https://wordpress.org/?v=7.0.1</generator>
+ | Confirmed By: Rss Generator (Passive Detection)
+ |  - https://store.opechimil.online/comments/feed/, <generator>https://wordpress.org/?v=7.0.1</generator>
 
 [+] WordPress theme in use: astra
  | Location: https://store.opechimil.online/wp-content/themes/astra/
- | Last Updated: 2026-07-06 11:00pm GMT (3 days ago, per WordPress.org)
+ | Latest Version: 4.13.5 (up to date)
+ | Last Updated: 2026-07-06 11:00pm GMT (5 days ago, per WordPress.org)
  | Active Installs: 1,000,000 (per WordPress.org)
  | Readme: https://store.opechimil.online/wp-content/themes/astra/readme.txt
- | [!] The version is out of date, the latest version is 4.13.5
  | Style URL: https://store.opechimil.online/wp-content/themes/astra/style.css
  | Style Name: Astra
  | Style URI: https://wpastra.com/
@@ -73,50 +73,51 @@ Fingerprinting the version -: |=================================================
  | Found By: Urls In Homepage (Passive Detection)
  | Confirmed By: Urls In 404 Page (Passive Detection)
  |
- | Version: 4.13.4 (80% confidence)
+ | Version: 4.13.6 (80% confidence)
  | Found By: Style (Passive Detection)
- |  - https://store.opechimil.online/wp-content/themes/astra/style.css, Match: 'Version: 4.13.4'
+ |  - https://store.opechimil.online/wp-content/themes/astra/style.css, Match: 'Version: 4.13.6'
 
 [+] Enumerating Vulnerable Plugins (via Passive and Aggressive Methods)
 
- Checking Known Locations -: |===================================================================================|
+ Checking Known Locations -: |=========================================================|
 [i] No plugins Found.
 [+] Enumerating Vulnerable Themes (via Passive and Aggressive Methods)
 
- Checking Known Locations -: |===================================================================================|
+ Checking Known Locations -: |=========================================================|
 [i] No themes Found.
 [+] Enumerating Timthumbs
 
- Checking Known Locations -: |===================================================================================|
+ Checking Known Locations -: |=========================================================|
 
 [i] No Timthumbs Found.
 
 [+] Enumerating Config Backups
 
- Checking Config Backups -: |====================================================================================|
+ Checking Config Backups -: |==========================================================|
 
 [i] No Config Backups Found.
 
 [+] Enumerating DB Exports
 
- Checking DB Exports -: |========================================================================================|
+ Checking DB Exports -: |==============================================================|
 
 [i] No DB Exports Found.
 
 [+] Enumerating Users (via Passive and Aggressive Methods)
 
- Brute Forcing Author IDs -: |===================================================================================|
+ Brute Forcing Author IDs -: |=========================================================|
 [i] No Users Found.
 [+] WPScan DB API OK
  | Plan: free
- | Requests Done (during the scan): 15
- | Requests Remaining: 0
-[+] Finished: Fri Jul 10 11:25:16 2026
-[+] Requests Done: 12169
-[+] Cached Requests: 13
-[+] Most response codes received: 503: 10352, 200: 1197, 404: 609, 429: 4, 301: 3
+ | Requests Done (during the scan): 16
+ | Requests Remaining: 9
+[+] Finished: Sun Jul 12 01:47:17 2026
+[+] Requests Done: 10913
+[+] Cached Requests: 11
+[+] Most response codes received: 503: 10265, 404: 556, 200: 72, 403: 19, 302: 1
 [!] Too many server errors (5xx). The target may be experiencing issues or blocking requests
+[!] Too many client errors (4xx). This could indicate access restrictions, authentication issues, or WAF blocking
 [+] Data Sent: 0 B
-[+] Data Received: 41.088 MB
-[+] Memory used: 221.844 MB
-[+] Elapsed time: 00:11:44
+[+] Data Received: 24.701 MB
+[+] Memory used: 218.562 MB
+[+] Elapsed time: 00:11:10
