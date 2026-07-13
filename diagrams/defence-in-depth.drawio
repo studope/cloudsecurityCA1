@@ -1,0 +1,112 @@
+<mxfile host="app.diagrams.net" agent="Cursor">
+  <diagram id="defence-in-depth" name="Defence in Depth">
+    <mxGraphModel dx="1507" dy="1684" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontColor=#232F3E;" value="&lt;b&gt;Defence in Depth&lt;/b&gt;&lt;div&gt;&lt;b&gt;Layered Controls (Phase 1)&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="65" width="390" x="270" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="cloudwatch" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#4E7A80;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch;" value="&lt;b&gt;CloudWatch alarm&lt;/b&gt;" vertex="1">
+          <mxGeometry height="78" width="78" x="805" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="cw-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=11;fontColor=#4E7A80;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;detect brute force&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="150" x="769" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="cognito" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#B54958;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cognito;" value="&lt;b&gt;Cognito + TOTP&lt;/b&gt;" vertex="1">
+          <mxGeometry height="78" width="78" x="1032" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="cog-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=11;fontColor=#8F4A54;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;prevent password-only login&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="180" x="965" y="262" as="geometry" />
+        </mxCell>
+        <mxCell id="internet" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#5F6B7A;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" value="&lt;b&gt;Internet&lt;/b&gt;" vertex="1">
+          <mxGeometry height="78" width="78" x="242" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7D69AB;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.application_load_balancer;" value="&lt;b&gt;ALB + TLS&lt;/b&gt;" vertex="1">
+          <mxGeometry height="78" width="78" x="380" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="alb-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=11;fontColor=#545B64;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;encryption in transit&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="180" x="320" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2sg" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C27803;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;" value="&lt;b&gt;EC2 · SG 80 from ALB only&lt;/b&gt;" vertex="1">
+          <mxGeometry height="78" width="78" x="541" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=11;fontColor=#545B64;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;network segmentation&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="220" x="470" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="wordfence" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B54958;strokeColor=#ffffff;fontColor=#ffffff;fontSize=13;fontStyle=1;" value="&lt;b&gt;Wordfence WAF&lt;/b&gt;" vertex="1">
+          <mxGeometry height="66" width="150" x="680" y="346" as="geometry" />
+        </mxCell>
+        <mxCell id="wf-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=11;fontColor=#8F4A54;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;application filtering&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="190" x="660" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="wordpress" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5F6B7A;strokeColor=#ffffff;fontColor=#ffffff;fontSize=13;fontStyle=1;" value="&lt;b&gt;WordPress&lt;/b&gt;" vertex="1">
+          <mxGeometry height="66" width="130" x="920" y="346" as="geometry" />
+        </mxCell>
+        <mxCell id="rds" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#9B6B9E;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds_mariadb_instance;" value="&lt;b&gt;RDS (private subnet)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="78" width="78" x="1160" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="rds-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=11;fontColor=#7D5580;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;data tier isolation&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="190" x="1104" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" edge="1" parent="1" source="internet" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#5F6B7A;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="alb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" edge="1" parent="1" source="alb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#7D69AB;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ec2sg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" edge="1" parent="1" source="ec2sg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#C27803;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="wordfence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" edge="1" parent="1" source="wordfence" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#B54958;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="wordpress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" edge="1" parent="1" source="wordpress" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#9B6B9E;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="rds">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" edge="1" parent="1" source="wordpress" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#4E7A80;endArrow=block;endFill=1;exitX=0.35;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="cloudwatch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="966" y="310" />
+              <mxPoint x="844" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b2" edge="1" parent="1" source="wordpress" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#B54958;endArrow=block;endFill=1;exitX=0.65;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="cognito">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1004" y="310" />
+              <mxPoint x="1065" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="parallel-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7FAFA;strokeColor=#9CB7B9;dashed=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontSize=12;fontColor=#3E6266;" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;Account-wide detection &amp;amp; compliance&lt;/b&gt;  (runs in parallel — monitors all layers)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="170" width="580" x="690" y="497.5" as="geometry" />
+        </mxCell>
+        <mxCell id="guardduty" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#4E7A80;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.guardduty;" value="&lt;b&gt;Amazon GuardDuty&lt;/b&gt;" vertex="1">
+          <mxGeometry height="70" width="70" x="780" y="537.5" as="geometry" />
+        </mxCell>
+        <mxCell id="gd-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#3E6266;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;threat detection&lt;br&gt;(VPC flow logs)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="140" x="745" y="627.5" as="geometry" />
+        </mxCell>
+        <mxCell id="config" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#4E7A80;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.config;" value="&lt;b&gt;AWS Config&lt;/b&gt;" vertex="1">
+          <mxGeometry height="70" width="70" x="1040" y="537.5" as="geometry" />
+        </mxCell>
+        <mxCell id="cfg-cap" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=10;fontColor=#3E6266;fontStyle=2;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;misconfiguration rules&lt;br&gt;(incoming-ssh-disabled)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="170" x="1000" y="627.5" as="geometry" />
+        </mxCell>
+        <mxCell id="par-link" edge="1" parent="1" source="parallel-box" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;strokeWidth=2;strokeColor=#4E7A80;endArrow=block;endFill=1;fontSize=10;fontColor=#3E6266;exitX=0.515;exitY=0.028;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitPerimeter=0;" target="wordpress" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;parallel · account-wide&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.008" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ujBfCYq5veSYsAChSGYA-3" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;dashed=1;strokeWidth=2;fillColor=#f8cecc;strokeColor=#b85450;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1120" y="470" as="sourcePoint" />
+            <mxPoint x="1120" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
