@@ -12,12 +12,8 @@ _______________________________________________________________
                     https://automattic.com
 _______________________________________________________________
 
-[i] It seems like you have not updated the database for some time.
-[?] Do you want to update now? [Y]es [N]o, default: [N][i] Updating the Database ...
-[i] Update completed.
-
-[+] URL: https://store.opechimil.online/ [54.74.63.212]
-[+] Started: Sun Jul 12 01:36:07 2026
+[+] URL: https://store.opechimil.online/ [108.132.109.197]
+[+] Started: Tue Jul 14 10:47:23 2026
 [+] Command Line: wpscan --url https://store.opechimil.online/ --api-token [REDACTED] -e vp,vt,u,tt,cb,dbe --random-user-agent
 [+] Hostname: MacBook-Pro.local
 
@@ -44,23 +40,23 @@ Interesting Finding(s):
  | Found By: Robots Txt (Aggressive Detection)
  | Confidence: 100%
 
-[+] The external WP-Cron seems to be enabled: https://store.opechimil.online/wp-cron.php
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 60%
- | References:
- |  - https://www.iplocation.net/defend-wordpress-from-ddos
- |  - https://github.com/wpscanteam/wpscan/issues/1299
-
 [+] WordPress version 7.0.1 identified (Latest, released on 2026-07-09).
- | Found By: Rss Generator (Passive Detection)
- |  - https://store.opechimil.online/feed/, <generator>https://wordpress.org/?v=7.0.1</generator>
- | Confirmed By: Rss Generator (Passive Detection)
- |  - https://store.opechimil.online/comments/feed/, <generator>https://wordpress.org/?v=7.0.1</generator>
+ | Found By: Most Common Wp Includes Query Parameter In Homepage (Passive Detection)
+ |  - https://store.opechimil.online/wp-includes/css/dashicons.min.css?ver=7.0.1
+ | Confirmed By:
+ |  Common Wp Includes Query Parameter In Homepage (Passive Detection)
+ |   - https://store.opechimil.online/wp-includes/js/wp-util.min.js?ver=7.0.1
+ |  Query Parameter In Upgrade Page (Aggressive Detection)
+ |   - https://store.opechimil.online/wp-includes/css/dashicons.min.css?ver=7.0.1
+ |   - https://store.opechimil.online/wp-includes/css/buttons.min.css?ver=7.0.1
+ |   - https://store.opechimil.online/wp-admin/css/forms.min.css?ver=7.0.1
+ |   - https://store.opechimil.online/wp-admin/css/l10n.min.css?ver=7.0.1
+ |   - https://store.opechimil.online/wp-admin/css/install.min.css?ver=7.0.1
 
 [+] WordPress theme in use: astra
  | Location: https://store.opechimil.online/wp-content/themes/astra/
  | Latest Version: 4.13.5 (up to date)
- | Last Updated: 2026-07-06 11:00pm GMT (5 days ago, per WordPress.org)
+ | Last Updated: 2026-07-06 11:00pm GMT (7 days ago, per WordPress.org)
  | Active Installs: 1,000,000 (per WordPress.org)
  | Readme: https://store.opechimil.online/wp-content/themes/astra/readme.txt
  | Style URL: https://store.opechimil.online/wp-content/themes/astra/style.css
@@ -79,45 +75,479 @@ Interesting Finding(s):
 
 [+] Enumerating Vulnerable Plugins (via Passive and Aggressive Methods)
 
- Checking Known Locations -: |=========================================================|
-[i] No plugins Found.
+[+] woocommerce
+ | Location: https://store.opechimil.online/wp-content/plugins/woocommerce/
+ | Latest Version: 10.9.4
+ | Last Updated: 2026-07-07 2:16pm GMT (6 days ago, per WordPress.org)
+ | Active Installs: 7,000,000 (per WordPress.org)
+ | Readme: https://store.opechimil.online/wp-content/plugins/woocommerce/readme.txt
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | [!] 53 vulnerabilities identified:
+ |
+ | [!] Title: WooCommerce 2.0.17 - hide-wc-extensions-message Parameter Reflected XSS
+ |     UUID: 6f59b2c9-1466-4c83-8967-cc1bb9b07ea6
+ |     Fixed in: 2.0.17
+ |     References:
+ |      - https://wpscan.com/vulnerability/6f59b2c9-1466-4c83-8967-cc1bb9b07ea6
+ |      - https://packetstormsecurity.com/files/123684/
+ |      - https://www.securityfocus.com/bid/63228/
+ |
+ | [!] Title: WooCommerce 2.0.12 - index.php calc_shipping_state Parameter XSS
+ |     UUID: 05600919-3d11-4539-8850-3ac8fc6fe5a9
+ |     Fixed in: 2.0.13
+ |     References:
+ |      - https://wpscan.com/vulnerability/05600919-3d11-4539-8850-3ac8fc6fe5a9
+ |      - https://packetstormsecurity.com/files/122465/
+ |
+ | [!] Title: WooCommerce < 2.2.3 - Reflected Cross-Site Scripting (XSS)
+ |     UUID: a2cc949c-838f-4e47-9ee8-07e3fb3cb049
+ |     Fixed in: 2.2.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/a2cc949c-838f-4e47-9ee8-07e3fb3cb049
+ |      - https://seclists.org/fulldisclosure/2014/Sep/59
+ |      - https://advisories.dxw.com/advisories/reflected-xss-in-woocommerce-excelling-ecommerce-allows-attackers-ability-to-do-almost-anything-an-admin-user-can-do/
+ |
+ | [!] Title: WooCommerce <= 2.2.2 - Reflected Cross-Site Scripting (XSS)
+ |     UUID: 1c0eced1-f1ff-475b-ba41-2d821bec5094
+ |     Fixed in: 2.2.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/1c0eced1-f1ff-475b-ba41-2d821bec5094
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6313
+ |      - https://seclists.org/fulldisclosure/2014/Sep/59
+ |
+ | [!] Title: WooCommerce <= 2.2.10 - Cross-Site Scripting (XSS)
+ |     UUID: 301c83b2-a326-42f5-ad27-92845716dcd3
+ |     Fixed in: 2.2.11
+ |     References:
+ |      - https://wpscan.com/vulnerability/301c83b2-a326-42f5-ad27-92845716dcd3
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2069
+ |      - https://seclists.org/fulldisclosure/2015/Feb/75
+ |      - https://packetstormsecurity.com/files/130458/
+ |
+ | [!] Title: WooCommerce 2.3 - 2.3.5 - SQL Injection
+ |     UUID: 7f1ab25f-4171-48a6-a67c-fa6020c7a0d6
+ |     Fixed in: 2.3.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/7f1ab25f-4171-48a6-a67c-fa6020c7a0d6
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2329
+ |      - http://www.wordfence.com/blog/2015/03/woocommerce-sql-injection-vulnerability/
+ |
+ | [!] Title: WooCommerce 2.0.20-2.3.10 - Object Injection / XXE
+ |     UUID: 9d4d6f49-5e02-4424-860e-f41453c9d7cf
+ |     Fixed in: 2.3.11
+ |     References:
+ |      - https://wpscan.com/vulnerability/9d4d6f49-5e02-4424-860e-f41453c9d7cf
+ |      - https://blog.sucuri.net/2015/06/security-advisory-object-injection-vulnerability-in-woocommerce.html
+ |
+ | [!] Title: WooCommerce <= 2.4.8 - Authenticated Cross-Site Scripting (XSS)
+ |     UUID: b0761276-0a27-4a9b-96ff-faf751a5e77a
+ |     Fixed in: 2.4.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/b0761276-0a27-4a9b-96ff-faf751a5e77a
+ |      - https://fortiguard.com/zeroday/FG-VD-15-095
+ |
+ | [!] Title: WooCommerce <= 2.6.2 - Authenticated Cross-Site Scripting (XSS)
+ |     UUID: 39988889-a8f4-4434-a9e9-598f926cf0b0
+ |     Fixed in: 2.6.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/39988889-a8f4-4434-a9e9-598f926cf0b0
+ |      - https://woocommerce.wordpress.com/2016/07/19/woocommerce-2-6-3-fixsecurity-release-notes/
+ |      - https://sumofpwn.nl/advisory/2016/persistent_cross_site_scripting_in_woocommerce_using_image_metadata__exif_.html
+ |
+ | [!] Title: WooCommerce <= 2.6.3 - Stored Cross Site Scripting (XSS) via REST API
+ |     UUID: d4f7dff0-7391-4448-95dd-327f0803a9b8
+ |     Fixed in: 2.6.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/d4f7dff0-7391-4448-95dd-327f0803a9b8
+ |      - https://sumofpwn.nl/advisory/2016/persistent_cross_site_scripting_in_woocommerce_wordpress_plugin.html
+ |      - https://seclists.org/fulldisclosure/2016/Sep/20
+ |      - https://hackerone.com/reports/152692
+ |
+ | [!] Title: WooCommerce <= 2.6.8 - Authenticated Tax-Rate CSV XSS
+ |     UUID: 037bf4b0-889e-4af3-8ede-efbd5f71f3e3
+ |     Fixed in: 2.6.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/037bf4b0-889e-4af3-8ede-efbd5f71f3e3
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10112
+ |      - https://fortiguard.com/zeroday/FG-VD-15-020
+ |      - https://www.fortinet.com/blog/threat-research/woocommerce-tax-rates-cross-site-scripting-vulnerability2.html
+ |
+ | [!] Title: WooCommerce <= 3.2.3 - Authenticated PHP Object Injection
+ |     UUID: 1d0470df-4671-47ac-8d87-a165e8f7d502
+ |     Fixed in: 3.2.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/1d0470df-4671-47ac-8d87-a165e8f7d502
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18356
+ |      - https://woocommerce.wordpress.com/2017/11/16/woocommerce-3-2-4-security-fix-release-notes/
+ |      - https://blog.ripstech.com/2018/woocommerce-php-object-injection/
+ |
+ | [!] Title: WooCommerce <= 3.4.4 - Potential Object Injection
+ |     UUID: 13a534b4-97bd-48e1-b936-cc57c9c56396
+ |     Fixed in: 3.4.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/13a534b4-97bd-48e1-b936-cc57c9c56396
+ |      - https://woocommerce.wordpress.com/2018/08/29/woocommerce-3-4-5-security-fix-release-notes/
+ |
+ | [!] Title: WooCommerce <= 3.4.5 - Authenticated Object Injection
+ |     UUID: b9af34f0-9012-41a1-870b-89d4e5d2eb27
+ |     Fixed in: 3.4.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/b9af34f0-9012-41a1-870b-89d4e5d2eb27
+ |      - https://medium.com/websec/woocommerce-and-azis-with-scotch-bc9d561377e1
+ |      - https://github.com/woocommerce/woocommerce/commit/4738162c25bb244631574d4230533b470f0ee8df#diff-dc3a1c9d68e161cfe6566b05971ec631
+ |      - https://woocommerce.wordpress.com/2018/10/11/woocommerce-3-4-6-security-fix-release-notes/
+ |
+ | [!] Title: WooCommerce <= 3.4.5 - Authenticated File Deletion to Privilege Escalation
+ |     UUID: ad7f42a7-1ffb-4613-864a-6ae3249d8e10
+ |     Fixed in: 3.4.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/ad7f42a7-1ffb-4613-864a-6ae3249d8e10
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20714
+ |      - https://blog.ripstech.com/2018/wordpress-design-flaw-leads-to-woocommerce-rce/
+ |      - https://woocommerce.wordpress.com/2018/10/11/woocommerce-3-4-6-security-fix-release-notes/
+ |      - https://www.ripstech.com/php-security-calendar-2018/
+ |
+ | [!] Title: WooCommerce <= 3.4.5 - Authenticated Stored XSS
+ |     UUID: 7275a176-d579-471a-8492-df8edbdf27de
+ |     Fixed in: 3.4.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/7275a176-d579-471a-8492-df8edbdf27de
+ |      - https://www.ripstech.com/php-security-calendar-2018/#day-1
+ |      - https://woocommerce.wordpress.com/2018/10/11/woocommerce-3-4-6-security-fix-release-notes/
+ |
+ | [!] Title: WooCommerce <= 3.4.5 - Authenticated Phar Deserialization
+ |     UUID: 9567f575-529d-4d66-980c-73cba6726673
+ |     Fixed in: 3.4.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/9567f575-529d-4d66-980c-73cba6726673
+ |      - https://www.ripstech.com/php-security-calendar-2018/#day-3
+ |      - https://woocommerce.wordpress.com/2018/10/11/woocommerce-3-4-6-security-fix-release-notes/
+ |
+ | [!] Title: WooCommerce <= 3.5.0 - Authenticated Stored XSS
+ |     UUID: 446d5271-c32a-4298-be0d-8e2f60681a71
+ |     Fixed in: 3.5.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/446d5271-c32a-4298-be0d-8e2f60681a71
+ |      - https://www.ripstech.com/php-security-calendar-2018/#Day23
+ |
+ | [!] Title: WooCommerce <= 3.5.4 - Stored Cross-Site Scripting (XSS)
+ |     UUID: 661a5cd0-f152-4a33-8de8-55fa9f73c8d4
+ |     Fixed in: 3.5.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/661a5cd0-f152-4a33-8de8-55fa9f73c8d4
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9168
+ |      - https://woocommerce.wordpress.com/2019/02/20/woocommerce-3-5-5-security-fix-release/
+ |      - https://fortiguard.com/zeroday/FG-VD-19-022
+ |      - https://github.com/woocommerce/woocommerce/commit/ffa230de9091cde33f1d60ffc971533e8682ba8f
+ |      - https://github.com/woocommerce/woocommerce/commit/7def966e4fe626cca274b5a714e07ac36f2655a6
+ |
+ | [!] Title: WooCommerce <= 3.6.4 - Cross-Site Request Forgery (CSRF) & File Type Check
+ |     UUID: 4760a717-3f2d-4491-bfb1-ae0754c3bda5
+ |     Fixed in: 3.6.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/4760a717-3f2d-4491-bfb1-ae0754c3bda5
+ |      - https://plugins.trac.wordpress.org/changeset?reponame=&new=2116363%40woocommerce&old=2096035%40woocommerce
+ |      - https://twitter.com/WooCommerce/status/1147543261814374401
+ |      - https://woocommerce.wordpress.com/2019/07/02/woocommerce-3-6-5-security-release/
+ |      - https://blog.ripstech.com/2019/woocommerce-csrf-to-stored-xss/
+ |
+ | [!] Title: WooCommerce < 4.1.0 - Unescaped Metadata when Duplicating Products
+ |     UUID: e938f544-d043-4831-888f-52d94e7c6c3d
+ |     Fixed in: 4.1.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/e938f544-d043-4831-888f-52d94e7c6c3d
+ |      - https://plugins.trac.wordpress.org/browser/woocommerce/tags/4.1.0/readme.txt?rev=2298743
+ |
+ | [!] Title: WooCommerce < 4.2.1 - Potential Cross-Site Scripting (XSS) via SelectWoo
+ |     UUID: 8dac6eec-6573-4de0-b37f-ff09834c50bd
+ |     Fixed in: 4.2.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/8dac6eec-6573-4de0-b37f-ff09834c50bd
+ |      - https://woocommerce.wordpress.com/2020/06/22/woocommerce-4-2-1-security-and-fix-release/
+ |      - https://github.com/woocommerce/woocommerce/commit/40f7c2d474e242440b2fb9a886353f5a8772a210
+ |      - https://github.com/woocommerce/woocommerce/commit/14a26aca2cde9c81ade02bdc6dd0a34e184a4202
+ |      - https://github.com/woocommerce/selectWoo/releases/tag/1.0.7
+ |
+ | [!] Title: WooCommerce < 4.6.2 - Guest Account Creation
+ |     UUID: 3f3094ed-23ea-4bfb-847a-d06d8a7e7cee
+ |     Fixed in: 4.6.2
+ |     References:
+ |      - https://wpscan.com/vulnerability/3f3094ed-23ea-4bfb-847a-d06d8a7e7cee
+ |      - https://developer.woocommerce.com/2020/11/05/developer-advisory-spam-orders-and-accounts-from-bots/
+ |      - https://github.com/woocommerce/woocommerce/commit/e711a447feaf3d6020204e4319fdd5ba47c3f0b9
+ |
+ | [!] Title: WooCommerce < 4.7.0 - Arbitrary Order Status Disclosure via IDOR
+ |     UUID: c420f079-5803-47ec-9844-28b0785c35f0
+ |     Fixed in: 4.7.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/c420f079-5803-47ec-9844-28b0785c35f0
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-29156
+ |      - https://github.com/Ko-kn3t/CVE-2020-29156
+ |
+ | [!] Title: Woocommerce < 5.2.0 - Authenticated Stored Cross-Site Scripting (XSS)
+ |     UUID: 6d262555-7ae4-4e36-add6-4baa34dc3010
+ |     Fixed in: 5.2.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/6d262555-7ae4-4e36-add6-4baa34dc3010
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-24323
+ |      - https://www.youtube.com/watch?v=YXNYkVbaAfo
+ |
+ | [!] Title: Woocommerce 3.3 to 5.5 - Authenticated Blind SQL Injection
+ |     UUID: 1212fec8-1fde-41e5-af70-abdd7ffe5379
+ |     Fixed in: 5.5.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/1212fec8-1fde-41e5-af70-abdd7ffe5379
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-32790
+ |      - https://woocommerce.com/posts/critical-vulnerability-detected-july-2021/
+ |      - https://twitter.com/WooCommerce/status/1415442447312764931
+ |      - https://www.wordfence.com/blog/2021/07/critical-sql-injection-vulnerability-patched-in-woocommerce/
+ |      - https://noc.org/2021/07/15/serious-sqli-in-woocommerce/
+ |      - https://blog.wpscan.com/critical-woocommerce-vulnerabilities/
+ |      - https://github.com/woocommerce/woocommerce/security/advisories/GHSA-7vx5-x39w-q24g
+ |
+ | [!] Title: WooCommerce < 5.7.0  & WooCommerce Admin < 2.6.4 - Analytics Report Leaks
+ |     UUID: 6f1ecd1e-5363-44df-b9c7-a67dc9398261
+ |     Fixed in: 5.7.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/6f1ecd1e-5363-44df-b9c7-a67dc9398261
+ |      - https://developer.woocommerce.com/2021/09/22/important-security-patch-released-in-woocommerce/
+ |
+ | [!] Title: WooCommerce < 6.2.1 - Subscriber+ Arbitrary Comment Deletion
+ |     UUID: b76dbf37-a0a2-48cf-bd85-3ebbc2f394dd
+ |     Fixed in: 6.2.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/b76dbf37-a0a2-48cf-bd85-3ebbc2f394dd
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0775
+ |      - https://plugins.trac.wordpress.org/changeset/2683324
+ |      - https://developer.woocommerce.com/2022/02/22/woocommerce-6-2-1-security-fix/
+ |
+ | [!] Title: WooCommerce < 6.2.1 - Path Traversal via Importers
+ |     UUID: 26e169da-4020-4b3d-8bee-af01bd853791
+ |     Fixed in: 6.2.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/26e169da-4020-4b3d-8bee-af01bd853791
+ |      - https://plugins.trac.wordpress.org/changeset/2683324
+ |      - https://developer.woocommerce.com/2022/02/22/woocommerce-6-2-1-security-fix/
+ |
+ | [!] Title: WooCommerce < 6.3.1 - Orders Marked as Paid (via PayPal Standard Gateway)
+ |     UUID: bdda03d0-d657-4e12-8996-40152194c607
+ |     Fixed in: 6.3.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/bdda03d0-d657-4e12-8996-40152194c607
+ |      - https://developer.woocommerce.com/2022/03/10/woocommerce-3-5-10-6-3-1-security-releases/
+ |
+ | [!] Title: WooCommerce < 6.6.0 - Admin+ Stored HTML Injection
+ |     UUID: 0316e5f3-3302-40e3-8ff4-be3423a3be7b
+ |     Fixed in: 6.6.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/0316e5f3-3302-40e3-8ff4-be3423a3be7b
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2099
+ |
+ | [!] Title: WooCommerce < 7.9 - Unauthenticated Sensitive Information Disclosure
+ |     UUID: d1cec296-b5df-4cea-8c0d-d03a975cb6af
+ |     Fixed in: 7.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/d1cec296-b5df-4cea-8c0d-d03a975cb6af
+ |      - https://hackerone.com/reports/2057736
+ |
+ | [!] Title: WooCommerce < 8.1.1 - Shop Manager+ User Metadata Disclosure
+ |     UUID: bb9f355a-be33-41b1-af36-0a30c24bec8c
+ |     Fixed in: 8.1.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/bb9f355a-be33-41b1-af36-0a30c24bec8c
+ |      - https://hackerone.com/reports/1702658
+ |      - https://developer.woocommerce.com/2023/09/16/woocommerce-vulnerability-reintroduced-from-7-0-1/
+ |
+ | [!] Title: WooCommerce < 7.9.0 - Sensitive Information Exposure
+ |     UUID: 9c9498b0-d42e-4ce0-b299-ba5d08058a75
+ |     Fixed in: 7.9.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/9c9498b0-d42e-4ce0-b299-ba5d08058a75
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/7b2d1879-c337-41c9-9f47-f9c2fe8e5928
+ |
+ | [!] Title: WooCommerce <= 8.1.1 & WooCommerce Blocks <= 11.1.1 - Authenticated (Contributor+) Stored Cross-Site Scripting via Featured Image alt Attribute
+ |     UUID: b8e9b8cf-8d13-4fd8-8e1e-ee35a01baf05
+ |     Fixed in: 8.2.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/b8e9b8cf-8d13-4fd8-8e1e-ee35a01baf05
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-47777
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/525dec5b-b457-483c-ab2d-09dd320edcaa
+ |
+ | [!] Title: WooCommerce < 7.0.1 - Authenticated(Shop Manager+) Sensitive Information Exposure
+ |     UUID: 45f56af8-b238-41a5-b7d5-bd40982d5ed7
+ |     Fixed in: 7.0.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/45f56af8-b238-41a5-b7d5-bd40982d5ed7
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/f1efcff5-3af6-4c44-9654-b917523419aa
+ |
+ | [!] Title: WooCommerce < 8.3.0 - Cross-Site Request Forgery
+ |     UUID: d11e7996-3417-4b1b-a090-2f4d31cdd11d
+ |     Fixed in: 8.3.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/d11e7996-3417-4b1b-a090-2f4d31cdd11d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-52222
+ |      - https://patchstack.com/database/vulnerability/woocommerce/wordpress-woocommerce-plugin-8-2-2-cross-site-request-forgery-csrf-vulnerability
+ |
+ | [!] Title: WooCommerce < 8.4.0 - Reflected Cross-Site Scripting
+ |     UUID: 0b51f01a-24d9-4101-bdcf-728b21efc5ed
+ |     Fixed in: 8.4.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/0b51f01a-24d9-4101-bdcf-728b21efc5ed
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/43810a17-89b4-44f5-887e-1ad0989ea5b4
+ |
+ | [!] Title: WooCommerce < 8.6 - Contributor+ Private/Draft Products Access
+ |     UUID: a7735feb-876e-461c-9a56-ea6067faf277
+ |     Fixed in: 8.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/a7735feb-876e-461c-9a56-ea6067faf277
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-1310
+ |
+ | [!] Title: WooCommerce < 8.6.0 - Cross-Site Request Forgery
+ |     UUID: 14d03287-6571-46d3-89af-0ad64dad6d33
+ |     Fixed in: 8.6.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/14d03287-6571-46d3-89af-0ad64dad6d33
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-22155
+ |      - https://patchstack.com/database/vulnerability/woocommerce/wordpress-woocommerce-plugin-8-5-2-cross-site-request-forgery-csrf-vulnerability
+ |
+ | [!] Title: WooCommerce 8.8.0 - 8.9.2 - Reflected XSS
+ |     UUID: f4d603ce-a101-4505-aad1-12a40959860d
+ |     Fixed in: 8.9.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/f4d603ce-a101-4505-aad1-12a40959860d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-37297
+ |      - https://developer.woocommerce.com/2024/06/10/developer-advisory-xss-vulnerability-8-8-0/
+ |
+ | [!] Title: WooCommerce < 9.0.0 - Shop Manager+ Content Injection
+ |     UUID: 44887eb0-ee24-4368-ba5e-6ed189ba8e5d
+ |     Fixed in: 9.0.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/44887eb0-ee24-4368-ba5e-6ed189ba8e5d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-35777
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/ee8436c2-3dda-481c-92b3-cc2ba8fc1993
+ |
+ | [!] Title: WooCommerce < 9.1.4 - Stored XSS
+ |     UUID: d72df81e-c0e8-4705-8bd1-67a71f78a47e
+ |     Fixed in: 9.1.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/d72df81e-c0e8-4705-8bd1-67a71f78a47e
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-39666
+ |
+ | [!] Title: WooCommerce < 9.2 - Contributor+ Stored XSS
+ |     UUID: c966c5ea-3cb4-4dc0-ac85-8d534c83804b
+ |     Fixed in: 9.2
+ |     References:
+ |      - https://wpscan.com/vulnerability/c966c5ea-3cb4-4dc0-ac85-8d534c83804b
+ |      - https://developer.woocommerce.com/2024/08/21/woocommerce-9-2-a-better-experience-for-all-users/
+ |
+ | [!] Title: WooCommerce < 9.1.0 - Unauthenticated HTML Injection
+ |     UUID: ccef1e59-40df-4645-aacb-4bb9c4b96456
+ |     Fixed in: 9.1.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/ccef1e59-40df-4645-aacb-4bb9c4b96456
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-9944
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/b5dfe2a5-612f-4e6c-a639-4afcff2ffa4c
+ |
+ | [!] Title: WooCommerce < 9.4.3 - Reflected XSS
+ |     UUID: 505aa04b-3969-4fea-a296-a6af7ef71409
+ |     Fixed in: 9.4.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/505aa04b-3969-4fea-a296-a6af7ef71409
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5062
+ |
+ | [!] Title: WooCommerce < 9.4.3 - Unauthenticated Order Creation
+ |     UUID: d51f5bb7-ba87-4ce8-adcf-6bef4217b5db
+ |     Fixed in: 9.4.3
+ |     Reference: https://wpscan.com/vulnerability/d51f5bb7-ba87-4ce8-adcf-6bef4217b5db
+ |
+ | [!] Title: Woocommerce < 9.7.1 - Shop Manager+ Stored XSS via New Product Form
+ |     UUID: 94cbfc1b-9a55-44fa-b1d9-0c47980ace3c
+ |     Fixed in: 9.7.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/94cbfc1b-9a55-44fa-b1d9-0c47980ace3c
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-26762
+ |      - https://developer.woocommerce.com/2025/03/04/woocommerce-9-7-1-dot-release/
+ |
+ | [!] Title: Wocommerce < 9.9.4 - Shop manager+ SQLi
+ |     UUID: b893ee7e-0044-43f4-8d77-0aab5f581c02
+ |     Fixed in: 9.9.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/b893ee7e-0044-43f4-8d77-0aab5f581c02
+ |      - https://hackerone.com/reports/3198980
+ |
+ | [!] Title: WooCommerce < 10.0 - Shop Manager PII Leak in Multisite
+ |     UUID: 7a380aca-4579-4a38-b566-4c4e9ef049f5
+ |     Fixed in: 10.0
+ |     Reference: https://wpscan.com/vulnerability/7a380aca-4579-4a38-b566-4c4e9ef049f5
+ |
+ | [!] Title: WooCommerce < 10.0.3 - Shop manager+ Stored XSS
+ |     UUID: fa00066f-3a14-408d-96a6-3aa60d4ab542
+ |     Fixed in: 10.0.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/fa00066f-3a14-408d-96a6-3aa60d4ab542
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-49042
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/3dbe7a3c-8247-4f1f-aca6-dda4bdcc1daf
+ |
+ | [!] Title: WooCommerce - Subscriber/Customer+ Order Data Disclosure
+ |     UUID: f55fd7d3-7fbe-474f-9406-f47f8aee5e57
+ |     Fixed in: 8.1.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/f55fd7d3-7fbe-474f-9406-f47f8aee5e57
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15033
+ |      - https://developer.woocommerce.com/2025/12/22/store-api-vulnerability-patched-in-woocommerce-8-1/
+ |
+ | [!] Title: WooCommerce < 10.5.3 - Arbitrary Admin User Creation via CSRF
+ |     UUID: 53ded097-274d-4850-82ee-620bf02f7553
+ |     Fixed in: 5.4.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/53ded097-274d-4850-82ee-620bf02f7553
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3589
+ |      - https://developer.woocommerce.com/2026/03/02/store-api-vulnerability-patched-in-woocommerce-5-4/
+ |
+ | The version could not be determined.
+
+ Checking Known Locations -: |==========================================================================================
+ Checking Known Locations -: |==================================================================================================|
+[i] 1 plugin(s) Identified.
 [+] Enumerating Vulnerable Themes (via Passive and Aggressive Methods)
 
- Checking Known Locations -: |=========================================================|
+ Checking Known Locations -: |==================================================================================================|
 [i] No themes Found.
 [+] Enumerating Timthumbs
 
- Checking Known Locations -: |=========================================================|
+ Checking Known Locations -: |==================================================================================================|
 
 [i] No Timthumbs Found.
 
 [+] Enumerating Config Backups
 
- Checking Config Backups -: |==========================================================|
+ Checking Config Backups -: |===================================================================================================|
 
 [i] No Config Backups Found.
 
 [+] Enumerating DB Exports
 
- Checking DB Exports -: |==============================================================|
+ Checking DB Exports -: |=======================================================================================================|
 
 [i] No DB Exports Found.
 
 [+] Enumerating Users (via Passive and Aggressive Methods)
 
- Brute Forcing Author IDs -: |=========================================================|
+ Brute Forcing Author IDs -: |==================================================================================================|
 [i] No Users Found.
 [+] WPScan DB API OK
  | Plan: free
- | Requests Done (during the scan): 16
- | Requests Remaining: 9
-[+] Finished: Sun Jul 12 01:47:17 2026
-[+] Requests Done: 10913
+ | Requests Done (during the scan): 17
+ | Requests Remaining: 8
+[+] Finished: Tue Jul 14 11:26:03 2026
+[+] Requests Done: 10916
 [+] Cached Requests: 11
-[+] Most response codes received: 503: 10265, 404: 556, 200: 72, 403: 19, 302: 1
+[+] Most response codes received: 503: 8831, 404: 1979, 200: 72, 403: 21, 301: 7
 [!] Too many server errors (5xx). The target may be experiencing issues or blocking requests
 [!] Too many client errors (4xx). This could indicate access restrictions, authentication issues, or WAF blocking
 [+] Data Sent: 0 B
-[+] Data Received: 24.701 MB
-[+] Memory used: 218.562 MB
-[+] Elapsed time: 00:11:10
+[+] Data Received: 10.143 MB
+[+] Memory used: 26.766 MB
+[+] Elapsed time: 00:38:40
